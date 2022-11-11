@@ -8,12 +8,10 @@ import com.masai.dao.AdminstratorDAOimpl;
 import com.masai.model.Batch;
 
 public class AllocateBatch {
-	public static void main(String[] args) {
-		System.out.println("want to allocate batch to student.......");
+	public void allocateBatch(int studentid) {
+		System.out.println("want to allocate batch to student.......\n");
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("Enter_StudentId :- ");
-		int studentid = sc.nextInt();
 		AdminstratorDAO admin = new AdminstratorDAOimpl();
 		try {
 			List<Batch> batches = admin.getAvailabBatchs(studentid);

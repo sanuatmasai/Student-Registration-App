@@ -9,8 +9,8 @@ import com.masai.exceptions.CourseException;
 import com.masai.model.Course;
 
 public class GetCourse {
-	public static void main(String[] args) {
-		System.out.println("get details of course.....");
+	public void getcourse() {
+		System.out.println("get details of course.....\n");
 		Scanner sc = new Scanner(System.in);
 		System.out.print("CourseName :- ");
 		String coursename = sc.next();

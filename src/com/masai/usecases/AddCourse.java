@@ -8,8 +8,8 @@ import com.masai.exceptions.CourseException;
 import com.masai.model.Course;
 
 public class AddCourse {
-	public static void main(String[] args) {
-		System.out.println("Want to Add courses, provide details...");
+	public void addcourse() {
+		System.out.println("Want to Add courses, provide details...\n");
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.print("CourseId :- ");
