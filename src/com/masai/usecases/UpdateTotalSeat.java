@@ -6,8 +6,8 @@ import com.masai.dao.AdminstratorDAOimpl;
 import com.masai.exceptions.BatchException;
 
 public class UpdateTotalSeat {
-	public static void main(String[] args) {
-		System.out.println("want to update total_seats of the batch.....");
+	public void updateTotalSeat() {
+		System.out.println("want to update total_seats of the batch.....\n");
 		Scanner sc = new Scanner(System.in);
 		System.out.print("BatchId :- ");
 		int bathId = sc.nextInt();
@@ -16,7 +16,7 @@ public class UpdateTotalSeat {
 		
 		AdminstratorDAO admin = new AdminstratorDAOimpl();
 		try {
-			System.out.println(admin.updateTotalSeats(bathId, increment));
+			admin.updateTotalSeats(bathId, increment);
 		} catch (BatchException e) {
 			System.out.println(e.getMessage());
 		}

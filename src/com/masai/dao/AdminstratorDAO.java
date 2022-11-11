@@ -2,9 +2,11 @@ package com.masai.dao;
 
 import java.util.List;
 
+import com.masai.exceptions.AdminException;
 import com.masai.exceptions.BatchException;
 import com.masai.exceptions.CourseException;
 import com.masai.exceptions.StudentException;
+import com.masai.model.Admin;
 import com.masai.model.Batch;
 import com.masai.model.Course;
 import com.masai.model.Student;
@@ -24,4 +26,6 @@ public interface AdminstratorDAO {
 	
 	public List<Batch> getAvailabBatchs(int studentId) throws BatchException; 
 	public String allocateBatch(int studentId, int batchId) throws StudentException;
+	
+	public Admin knowAdminId(String username, String password) throws AdminException;
 }

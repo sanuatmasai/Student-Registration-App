@@ -9,8 +9,8 @@ import com.masai.exceptions.StudentException;
 import com.masai.model.Student;
 
 public class GetStudents {
-	public static void main(String[] args) {
-		System.out.println("Get all the student of particular batch......");
+	public void getStudentMatrix() {
+		System.out.println("Get all the student of particular batch......\n");
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("give batchId :- ");
@@ -30,6 +30,7 @@ public class GetStudents {
 		try {
 			admin.getStudentByCourse(courseid);
 		} catch (Exception e) {
+			e.printStackTrace(); 
 			System.out.println(e.getMessage());
 		} 
 	}

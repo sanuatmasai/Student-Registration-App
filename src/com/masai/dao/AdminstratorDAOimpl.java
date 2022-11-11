@@ -7,15 +7,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.masai.exceptions.AdminException;
 import com.masai.exceptions.BatchException;
 import com.masai.exceptions.CourseException;
 import com.masai.exceptions.StudentException;
+import com.masai.model.Admin;
 import com.masai.model.Batch;
 import com.masai.model.Course;
 import com.masai.model.Student;
 import com.masai.utility.DBUtil;
-import com.mysql.cj.CoreSession;
-import com.mysql.cj.protocol.x.CompressionSplittedOutputStream;
+import com.mysql.cj.protocol.x.ContinuousOutputStream;
 
 public class AdminstratorDAOimpl implements AdminstratorDAO {
 
@@ -89,7 +90,7 @@ public class AdminstratorDAOimpl implements AdminstratorDAO {
 
 	@Override
 	public List<Course> getCourse(String courseName) throws CourseException {
-		List<Course> courses = null;
+		List<Course> courses = new ArrayList<>();
 		try(Connection conn = DBUtil.provideConnection()) {
 			PreparedStatement ps = conn.prepareStatement("select * from course where coursename = ?");
 			ps.setString(1, courseName);
@@ -193,22 +194,26 @@ public class AdminstratorDAOimpl implements AdminstratorDAO {
 	public List<Integer> getStudentByCourse(int courseId) throws StudentException, BatchException {
 		List<Integer> batchIds = new ArrayList<>();
 		try(Connection conn = DBUtil.provideConnection()) {
-			PreparedStatement ps = conn.prepareStatement("select Batchid from batch where courseid = ?)");
+			PreparedStatement ps = conn.prepareStatement("select Batchid from batch where courseid = ?");
 			ps.setInt(1, courseId);
 			
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				batchIds.add(rs.getInt("batchid"));
 				System.out.println("students in BatchId :- " + rs.getInt("batchid"));
-				List<Student> students = new AdminstratorDAOimpl().getStudentByBatch(rs.getInt("batchid"));
-				students.forEach(s -> System.out.println(s));
-				System.out.println("--------------------------------------");
+				try {
+					List<Student> students = new AdminstratorDAOimpl().getStudentByBatch(rs.getInt("batchid"));
+					students.forEach(s -> System.out.println(s));
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+				System.out.println("--------------------------------------");	
 			}
 			
 			if(batchIds.size() == 0){
 				throw new StudentException("No batch is available");
 			}
-			System.out.println(batchIds.size() + " batches available......");
+			System.out.println(batchIds.size() + " batches were available......");
 
 		} catch (SQLException e) {
 			throw new BatchException(e.getMessage());
@@ -234,7 +239,7 @@ public class AdminstratorDAOimpl implements AdminstratorDAO {
 				if(seat_available > 0) {
 					batches.add(batch);
 				}
-				System.out.println(batch + " seats_available :- " + seat_available);
+				System.out.println("[ BatchId :- "+ batch.getBatchid()+ ", " + "Instructor :- "+ batch.getInstructor()+ ", "+ "Class Duration :- "+ batch.getDuration()+ ", "+ " seats_available :- " + seat_available + " ]");
 			}
 			
 			if(batches.size() == 0){
@@ -253,29 +258,40 @@ public class AdminstratorDAOimpl implements AdminstratorDAO {
         // check from the main class that it is a valid batchid
 		String result = "Executing....";
 		try(Connection conn = DBUtil.provideConnection()) {
-			PreparedStatement ps1 = conn.prepareStatement("update student set isbatchAlloted = true where studentid = ?");
-			ps1.setInt(1, studentId);
-			
-			PreparedStatement ps2 = conn.prepareStatement("update batch set strength = strength + 1 where batchid = ?");
-			ps2.setInt(1, batchId);
-			
-			
-			PreparedStatement ps3 = conn.prepareStatement("insert into student_batch (studentid, batchid) values (?, ?)");
-			ps3.setInt(1, studentId);
-			ps3.setInt(2, batchId);
-			
-			
-			ps2.executeUpdate();
-			ps3.executeUpdate();
-			int x = ps1.executeUpdate();
-			
-			if(x > 0) {
-				System.out.println("studentId :- " + studentId + " has been alloted in the bath with id :- " + batchId);
-				result = "executed";
+			PreparedStatement ps = conn.prepareStatement("select isbatchAlloted from student where studentid = ?");
+			ps.setInt(1, studentId);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				if(!rs.getBoolean("isbatchalloted")) {
+					PreparedStatement ps1 = conn.prepareStatement("update student set isbatchAlloted = true where studentid = ?");
+					ps1.setInt(1, studentId);
+					
+					PreparedStatement ps2 = conn.prepareStatement("update batch set strength = strength + 1 where batchid = ?");
+					ps2.setInt(1, batchId);
+					
+					
+					PreparedStatement ps3 = conn.prepareStatement("insert into student_batch (studentid, batchid) values (?, ?)");
+					ps3.setInt(1, studentId);
+					ps3.setInt(2, batchId);
+					
+					
+					ps2.executeUpdate();
+					ps3.executeUpdate();
+					int x = ps1.executeUpdate();
+					
+					if(x > 0) {
+						System.out.println("student with studentId " + studentId + " has been alloted in the bath with batchId " + batchId);
+						result = "executed";
+					} else {
+						throw new StudentException("No batch has been alloted....");
+					}
+				} else {
+					System.out.println("Student with ID " + studentId + " has already been allocated to a batch.");
+				}
 			} else {
-				throw new StudentException("No batch has been alloted....");
+				throw new StudentException("No Student is Available with this ID.");
 			}
-			
+				
 		} catch (SQLException e) {
 			throw new StudentException(e.getMessage());
 		}
@@ -283,4 +299,30 @@ public class AdminstratorDAOimpl implements AdminstratorDAO {
 		return result;
 	}
 
+	@Override
+	public Admin knowAdminId(String username, String password) throws AdminException {
+		Admin admin = null;
+		try(Connection conn = DBUtil.provideConnection()) {
+			PreparedStatement ps = conn.prepareStatement("select * from admin where username = ? and password = ?");
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				admin = new Admin();
+				admin.setAdminId(rs.getInt("adminid"));
+				admin.setName(rs.getString("name"));
+				admin.setUsername(rs.getString("username"));
+				admin.setPassword(rs.getString("password"));
+				admin.setAddress(rs.getString("address"));
+				admin.setPhone(rs.getInt("phoneNo"));
+				
+			}else {
+				throw new AdminException("Invalid credentials..!");
+			}
+		} catch (SQLException e) {
+			throw new AdminException(e.getMessage());
+		}
+		return admin;
+	}
 }

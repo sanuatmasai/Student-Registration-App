@@ -8,8 +8,8 @@ import com.masai.exceptions.BatchException;
 import com.masai.model.Batch;
 
 public class AddBranchUnderCourse {
-	public static void main(String[] args) {
-		System.out.println("Want to Add branches under course, provide details...");
+	public void addbatch() {
+		System.out.println("Want to Add branches under course, provide details...\n");
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.print("CourseId :- ");
