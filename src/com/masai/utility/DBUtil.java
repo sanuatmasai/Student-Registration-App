@@ -15,12 +15,6 @@ public class DBUtil {
 		}
 		
 		String url = "jdbc:mysql://localhost:3306/db3";
-		
-
-
-
-
-		
 		try {
 			conn = DriverManager.getConnection(url, "root", "12345");
 		} catch (SQLException e) {
