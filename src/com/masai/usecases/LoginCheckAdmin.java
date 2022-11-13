@@ -20,19 +20,34 @@ public class LoginCheckAdmin {
 			System.out.println("hello "+ admin1.getName()+ " welcome to Masai.....");
 			System.out.println();
 			
-			System.out.println("1. Add a new course\r\n"
-					+ "2. Update fees of course\r\n"
-					+ "3. Delete a Course\r\n"
-					+ "4. Get a Course\r\n"
-					+ "5. Create Batch Under Course\r\n"
-					+ "6. Allocate Student Batch within a Course\r\n"
-					+ "7. Update Total Seat of a Batch\r\n"
-					+ "8. view details of student Matrix in each course and batch\r\n"
-					+ "9. Log Out\n");
-			
+//			System.out.println("   +------------------------------------------------------------------+\r\n"
+//							  +"   |   1. Add a new course                                            |\r\n"
+//							  +"   |   2. Update fees of course                                       |\r\n"
+//							  +"   |   3. Delete a Course                                             |\r\n"
+//							  +"   |   4. Get a Course                                                |\r\n"
+//							  +"   |   5. Create Batch Under Course                                   |\r\n"
+//							  +"   |   6. Allocate Student Batch within a Course                      |\r\n"
+//							  +"   |   7. Update Total Seat of a Batch                                |\r\n"
+//							  +"   |   8. view details of student Matrix in each course and batch     |\r\n"
+//							  +"   |   9. Log Out                                                     |\r\n"
+//							  +"   +------------------------------------------------------------------+");
+//			
 			while(true) {
-				System.out.println("_____________________________\n");
-				System.out.print("Enter Your Choice :- ");
+				System.out.println("   +------------------------------------------------------------------+\r\n"
+								  +"   |   1. Add a new course                                            |\r\n"
+								  +"   |   2. Update fees of course                                       |\r\n"
+								  +"   |   3. Delete a Course                                             |\r\n"
+								  +"   |   4. Get a Course                                                |\r\n"
+								  +"   |   5. Create Batch Under Course                                   |\r\n"
+								  +"   |   6. Allocate Student Batch within a Course                      |\r\n"
+								  +"   |   7. Update Total Seat of a Batch                                |\r\n"
+								  +"   |   8. view details of student Matrix in each course and batch     |\r\n"
+								  +"   |   9. Log Out                                                     |\r\n"
+								  +"   +------------------------------------------------------------------+");
+		
+				System.out.print(admin1.getName() +" what you want to perform ?\n"
+						+"\n"
+						+ "Enter Your Choice :- ");
 				int input = sc.nextInt();
 				if(input == 1) {
 					AddCourse ac = new AddCourse();

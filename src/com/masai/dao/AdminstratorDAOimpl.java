@@ -16,7 +16,6 @@ import com.masai.model.Batch;
 import com.masai.model.Course;
 import com.masai.model.Student;
 import com.masai.utility.DBUtil;
-import com.mysql.cj.protocol.x.ContinuousOutputStream;
 
 public class AdminstratorDAOimpl implements AdminstratorDAO {
 
@@ -238,8 +237,17 @@ public class AdminstratorDAOimpl implements AdminstratorDAO {
 				
 				if(seat_available > 0) {
 					batches.add(batch);
-				}
-				System.out.println("[ BatchId :- "+ batch.getBatchid()+ ", " + "Instructor :- "+ batch.getInstructor()+ ", "+ "Class Duration :- "+ batch.getDuration()+ ", "+ " seats_available :- " + seat_available + " ]");
+				} 
+//			System.out.println("[ BatchId :- "+ batch.getBatchid()+ ", " + "Instructor :- "+ batch.getInstructor()+ ", "+ "Class Duration :- "+                                                batch.getDuration()+ ", "+ " seats_available :-  " + seat_available + " ]" ); 
+				
+			System.out.println(		
+						      "   +----------------------------------------+\r\n"
+							+ "   |  batchid=" + batch.getBatchid()      +"|\r\n"   
+							+ "   |  instructor=" + batch.getInstructor()+"|\r\n" 
+							+ "   |  seats_available=" + seat_available  +"|\r\n" 
+							+ "   |  duration=" + batch.getDuration()    +"|\r\n" 
+							+ "   +----------------------------------------+");
+				
 			}
 			
 			if(batches.size() == 0){

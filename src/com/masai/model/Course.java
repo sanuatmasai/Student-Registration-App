@@ -3,8 +3,18 @@ package com.masai.model;
 public class Course {
 	@Override
 	public String toString() {
-		return "Course [courseid=" + courseid + ", coursename=" + coursename + ", price=" + price + ", durationDays="
-				+ durationDays + "]";
+		return 
+//				"Course [courseid=" + courseid + ", coursename=" + coursename + ", price=" + price + ", durationDays="
+//				+ durationDays + "]";
+		
+		
+		
+		  "   +---------------------------------------+\r\n"
+		+ "   |  courseid=" + courseid              +"|\r\n"   
+		+ "   |  coursename=" + coursename          +"|\r\n" 
+		+ "   |  price=" + price                    +"|\r\n" 
+		+ "   |  duration_in_Days=" + durationDays  +"|\r\n" 
+		+ "   +---------------------------------------+";
 	}
 
 	public int getCourseid() {
