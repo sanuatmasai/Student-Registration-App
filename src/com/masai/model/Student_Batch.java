@@ -29,8 +29,8 @@ public class Student_Batch {
 //				"Student_Batch [studentid=" + studentid + ", batchid=" + batchid + "]";
 		
 		      "   +-------------------------------+\r\n"
-			+ "   |  studentid=" + studentid    +"|\r\n"   
-			+ "   |  batchid=" + batchid        +"|\r\n" 
+			+ "   |  studentid = " + studentid    +"|\r\n"   
+			+ "   |  batchid = " + batchid        +"|\r\n" 
 			+ "   +------------------------------ +";
 	}
 
