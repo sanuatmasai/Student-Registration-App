@@ -25,7 +25,13 @@ public class Student_Batch {
 
 	@Override
 	public String toString() {
-		return "Student_Batch [studentid=" + studentid + ", batchid=" + batchid + "]";
+		return 
+//				"Student_Batch [studentid=" + studentid + ", batchid=" + batchid + "]";
+		
+		      "   +-------------------------------+\r\n"
+			+ "   |  studentid=" + studentid    +"|\r\n"   
+			+ "   |  batchid=" + batchid        +"|\r\n" 
+			+ "   +------------------------------ +";
 	}
 
 	int studentid;

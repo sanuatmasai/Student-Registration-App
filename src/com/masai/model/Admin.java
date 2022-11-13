@@ -3,10 +3,16 @@ package com.masai.model;
 public class Admin {
 	@Override
 	public String toString() {
-		return "Admin [adminId=" + adminId + ", name=" + name + ", username=" + username + ", password=" + password
-				+ ", address=" + address + ", phone=" + phone + "]";
+		return    "   +----------------------------------+\r\n"
+				+ "   |  adminId=" + adminId           +"|\r\n"   
+				+ "   |  name=" + name                 +"|\r\n" 
+				+ "   |  username=" + username         +"|\r\n" 
+				+ "   |  password=" + password         +"|\r\n" 
+				+ "   |  address=" + address           +"|\r\n" 
+				+ "   |  phone=" + phone               +"|\r\n" 
+				+ "   +----------------------------------+";
+		
 	}
-
 	public int getAdminId() {
 		return adminId;
 	}

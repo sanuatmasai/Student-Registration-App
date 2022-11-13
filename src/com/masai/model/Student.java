@@ -80,9 +80,23 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [username=" + username + ", password=" + password + ", studentid=" + studentid + ", name="
-				+ name + ", age=" + age + ", address=" + address + ", courseid=" + courseid + ", isBatchAlloted="
-				+ isBatchAlloted + "]";
+		return 
+//				"Student [username=" + username + ", password=" + password + ", studentid=" + studentid + ", name="
+//				+ name + ", age=" + age + ", address=" + address + ", courseid=" + courseid + ", isBatchAlloted="
+//				+ isBatchAlloted + "]";
+		
+		
+		
+		  "   +----------------------------------------+\r\n"
+		+ "   |  username=" + username               +"|\r\n"   
+		+ "   |  password=" + password               +"|\r\n" 
+		+ "   |  studentid=" + studentid             +"|\r\n" 
+		+ "   |  name=" + name                       +"|\r\n" 
+		+ "   |  age=" + age                         +"|\r\n" 
+		+ "   |  address=" + address                 +"|\r\n" 
+		+ "   |  courseid=" + courseid               +"|\r\n" 
+		+ "   |  isBatchAlloted=" + isBatchAlloted   +"|\r\n" 
+		+ "   +----------------------------------------+";
 	}
 
 	private String username;
