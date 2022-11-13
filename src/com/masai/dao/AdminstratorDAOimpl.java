@@ -242,10 +242,10 @@ public class AdminstratorDAOimpl implements AdminstratorDAO {
 				
 			System.out.println(		
 						      "   +----------------------------------------+\r\n"
-							+ "   |  batchid=" + batch.getBatchid()      +"|\r\n"   
-							+ "   |  instructor=" + batch.getInstructor()+"|\r\n" 
-							+ "   |  seats_available=" + seat_available  +"|\r\n" 
-							+ "   |  duration=" + batch.getDuration()    +"|\r\n" 
+							+ "   |  batchid = " + batch.getBatchid()      +"|\r\n"   
+							+ "   |  instructor = " + batch.getInstructor()+"|\r\n" 
+							+ "   |  seats_available = " + seat_available  +"|\r\n" 
+							+ "   |  duration = " + batch.getDuration()    +"|\r\n" 
 							+ "   +----------------------------------------+");
 				
 			}

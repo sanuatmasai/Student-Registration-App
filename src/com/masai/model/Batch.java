@@ -62,12 +62,12 @@ public class Batch {
 //				+ strength + ", max_capacity=" + max_capacity + ", duration=" + duration + "]";
 		
 		 "   +----------------------------------+\r\n"
-		+"   |  batchid=" + batchid           +"|\r\n"   
-		+"   |  courseid=" + courseid         +"|\r\n" 
-		+"   |  instructor=" + instructor     +"|\r\n" 
-		+"   |  strength=" + strength         +"|\r\n" 
-		+"   |  max_capacity=" + max_capacity +"|\r\n" 
-		+"   |  duration=" + duration         +"|\r\n" 
+		+"   |  batchid = " + batchid           +"|\r\n"   
+		+"   |  courseid = " + courseid         +"|\r\n" 
+		+"   |  instructor =" + instructor     +"|\r\n" 
+		+"   |  strength = " + strength         +"|\r\n" 
+		+"   |  max_capacity = " + max_capacity +"|\r\n" 
+		+"   |  duration = " + duration         +"|\r\n" 
 		+"   +----------------------------------+";
 	}
 
