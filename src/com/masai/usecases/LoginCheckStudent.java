@@ -21,24 +21,16 @@ public class LoginCheckStudent {
 			System.out.println("hello "+ student.getName()+ " welcome to Masai.....");
 			System.out.println();
 			
-//			System.out.println("   +---------------------------+\r\n"
-//							 + "   | 1. update username        |\r\n"
-//							 + "   | 2. update password        |\r\n"
-//							 + "   | 3. update name            |\r\n"
-//							 + "   | 4. update address         |\r\n"
-//							 + "   | 5. update age             |\r\n"
-//							 + "   | 6. Log Out                |\r\n"
-//							 + "   +---------------------------+");
-			
 			while(true) {
-				System.out.println("   +---------------------------+\r\n"
-								 + "   | 1. update username        |\r\n"
-								 + "   | 2. update password        |\r\n"
-								 + "   | 3. update name            |\r\n"
-								 + "   | 4. update address         |\r\n"
-								 + "   | 5. update age             |\r\n"
-								 + "   | 6. Log Out                |\r\n"
-								 + "   +---------------------------+");
+				System.out.println("   +----------------------------+\r\n"
+								 + "   | 1. update username.        |\r\n"
+								 + "   | 2. update password.        |\r\n"
+								 + "   | 3. update name.            |\r\n"
+								 + "   | 4. update address.         |\r\n"
+								 + "   | 5. update age.             |\r\n"
+								 + "   | 6. Know your Details.      |\r\n"
+								 + "   | 7. Log Out.                |\r\n"
+								 + "   +----------------------------+");
 		
 				System.out.print(student.getName() +" what you want to perform ?\n"
 						+"\n"
@@ -60,6 +52,9 @@ public class LoginCheckStudent {
 					System.out.print("Enter new age :- ");
 					stud.upadteData(input, sc.nextInt(), username, password);	
 				}else if(input == 6) {
+					StudentDAO sd = new StudentDAOimpl();
+					System.out.println(sd.knowStudent(username, password));		
+				}else if(input == 7) {
 					System.out.println("Log_Out Successfull....!");
 					break;
 				} else {

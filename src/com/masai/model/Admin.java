@@ -4,12 +4,12 @@ public class Admin {
 	@Override
 	public String toString() {
 		return    "   +----------------------------------+\r\n"
-				+ "   |  adminId = " + adminId           +"|\r\n"   
-				+ "   |  name = " + name                 +"|\r\n" 
-				+ "   |  username = " + username         +"|\r\n" 
-				+ "   |  password = " + password         +"|\r\n" 
-				+ "   |  address = " + address           +"|\r\n" 
-				+ "   |  phone = " + phone               +"|\r\n" 
+				+ "   |  adminId = " + adminId           +"\r\n"   
+				+ "   |  name = " + name                 +"\r\n" 
+				+ "   |  username = " + username         +"\r\n" 
+				+ "   |  password = " + password         +"\r\n" 
+				+ "   |  address = " + address           +"\r\n" 
+				+ "   |  phone = " + phone               +"\r\n" 
 				+ "   +----------------------------------+";
 		
 	}

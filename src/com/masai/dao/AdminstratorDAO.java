@@ -28,4 +28,5 @@ public interface AdminstratorDAO {
 	public String allocateBatch(int studentId, int batchId) throws StudentException;
 	
 	public Admin knowAdminId(String username, String password) throws AdminException;
+	public List<Batch> getallbBatchsInABatch(int corseId) throws BatchException; 
 }

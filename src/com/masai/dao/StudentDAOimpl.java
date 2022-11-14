@@ -135,4 +135,32 @@ public class StudentDAOimpl implements StudentDAO {
 		return result;
 	}
 
+	@Override
+	public Student knowStudent(String username, String password) throws StudentException {
+		Student student = null;
+		try(Connection conn = DBUtil.provideConnection()) {
+			PreparedStatement ps = conn.prepareStatement("select * from student where username = ? and password = ?");
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				String username1 = rs.getString("username");
+				String password1 = rs.getString("password");
+				int studentId = rs.getInt("studentId");
+				String name = rs.getString("name");
+				int age = rs.getInt("age");
+				String address = rs.getString("address");
+				int courseId = rs.getInt("Courseid");
+				boolean isbatchalloted = rs.getBoolean("isbatchalloted");
+				
+				student = new Student(username1, password1, studentId, name, age, address, courseId, isbatchalloted);
+			}else {
+				throw new StudentException("Invalid credentials..!");
+			}
+		} catch (SQLException e) {
+			throw new StudentException(e.getMessage());
+		}
+		return student;
+	}
 }

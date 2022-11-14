@@ -14,4 +14,5 @@ public interface StudentDAO {
 	public Student knowStudentId(String username, String password) throws StudentException;
 	public String upadteData(int value, Object key, String username, String password) throws StudentException;
 	
+	public Student knowStudent(String username, String password) throws StudentException;
 }

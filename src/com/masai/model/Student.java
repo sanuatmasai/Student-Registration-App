@@ -88,14 +88,14 @@ public class Student {
 		
 		
 		  "   +----------------------------------------+\r\n"
-		+ "   |  username = " + username               +"|\r\n"   
-		+ "   |  password = " + password               +"|\r\n" 
-		+ "   |  studentid = " + studentid             +"|\r\n" 
-		+ "   |  name = " + name                       +"|\r\n" 
-		+ "   |  age = " + age                         +"|\r\n" 
-		+ "   |  address = " + address                 +"|\r\n" 
-		+ "   |  courseid = " + courseid               +"|\r\n" 
-		+ "   |  isBatchAlloted = " + isBatchAlloted   +"|\r\n" 
+		+ "   |  username = " + username               +"\r\n"   
+		+ "   |  password = " + password               +"\r\n" 
+		+ "   |  studentid = " + studentid             +"\r\n" 
+		+ "   |  name = " + name                       +"\r\n" 
+		+ "   |  age = " + age                         +"\r\n" 
+		+ "   |  address = " + address                 +"\r\n" 
+		+ "   |  courseid = " + courseid               +"\r\n" 
+		+ "   |  isBatchAlloted = " + isBatchAlloted   +"\r\n" 
 		+ "   +----------------------------------------+";
 	}
 

@@ -9,12 +9,12 @@ public class Course {
 		
 		
 		
-		  "   +---------------------------------------+\r\n"
-		+ "   |  courseid=" + courseid              +"|\r\n"   
-		+ "   |  coursename=" + coursename          +"|\r\n" 
-		+ "   |  price=" + price                    +"|\r\n" 
-		+ "   |  duration_in_Days=" + durationDays  +"|\r\n" 
-		+ "   +---------------------------------------+";
+		  "   +--------------------------------------+\r\n"
+		+ "   |  courseid=" + courseid              +"\r\n"   
+		+ "   |  coursename=" + coursename          +"\r\n" 
+		+ "   |  price=" + price                    +"\r\n" 
+		+ "   |  duration_in_Days=" + durationDays  +"\r\n" 
+		+ "   +--------------------------------------+";
 	}
 
 	public int getCourseid() {

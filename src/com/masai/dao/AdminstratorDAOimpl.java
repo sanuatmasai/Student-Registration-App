@@ -242,10 +242,10 @@ public class AdminstratorDAOimpl implements AdminstratorDAO {
 				
 			System.out.println(		
 						      "   +----------------------------------------+\r\n"
-							+ "   |  batchid = " + batch.getBatchid()      +"|\r\n"   
-							+ "   |  instructor = " + batch.getInstructor()+"|\r\n" 
-							+ "   |  seats_available = " + seat_available  +"|\r\n" 
-							+ "   |  duration = " + batch.getDuration()    +"|\r\n" 
+							+ "   |  batchid = " + batch.getBatchid()      +"\r\n"   
+							+ "   |  instructor = " + batch.getInstructor()+"\r\n" 
+							+ "   |  seats_available = " + seat_available  +"\r\n" 
+							+ "   |  duration = " + batch.getDuration()    +"\r\n" 
 							+ "   +----------------------------------------+");
 				
 			}
@@ -332,5 +332,44 @@ public class AdminstratorDAOimpl implements AdminstratorDAO {
 			throw new AdminException(e.getMessage());
 		}
 		return admin;
+	}
+
+	@Override
+	public List<Batch> getallbBatchsInABatch(int courseId) throws BatchException {
+		List<Batch> batches = new ArrayList<>();
+		try(Connection conn = DBUtil.provideConnection()) {
+			PreparedStatement ps = conn.prepareStatement("select batchid, instructor, duration_in_hour, (max_capacity - strength) seat_available from batch where courseid = ?");
+			ps.setInt(1, courseId);
+			
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Batch batch = new Batch();
+				batch.setBatchid(rs.getInt("batchid")); 
+				batch.setInstructor(rs.getString("instructor"));
+				batch.setDuration(rs.getInt("duration_in_hour"));
+				int seat_available = rs.getInt("seat_available");
+				
+				if(seat_available > 0) {
+					batches.add(batch);
+				} 
+			System.out.println(		
+						      "   +----------------------------------------+\r\n"
+							+ "   |  batchid = " + batch.getBatchid()      +"\r\n"   
+							+ "   |  instructor = " + batch.getInstructor()+"\r\n" 
+							+ "   |  seats_available = " + seat_available  +"\r\n" 
+							+ "   |  duration = " + batch.getDuration()    +"\r\n" 
+							+ "   +----------------------------------------+");
+				
+			}
+			
+			if(batches.size() == 0){
+				throw new BatchException("No batch is available");
+			}
+			System.out.println(batches.size() + " batches available......");
+
+		} catch (SQLException e) {
+			throw new BatchException(e.getMessage());
+		}
+		return batches;
 	}
 }

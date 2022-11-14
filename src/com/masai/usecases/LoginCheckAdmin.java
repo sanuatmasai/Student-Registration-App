@@ -20,18 +20,6 @@ public class LoginCheckAdmin {
 			System.out.println("hello "+ admin1.getName()+ " welcome to Masai.....");
 			System.out.println();
 			
-//			System.out.println("   +------------------------------------------------------------------+\r\n"
-//							  +"   |   1. Add a new course                                            |\r\n"
-//							  +"   |   2. Update fees of course                                       |\r\n"
-//							  +"   |   3. Delete a Course                                             |\r\n"
-//							  +"   |   4. Get a Course                                                |\r\n"
-//							  +"   |   5. Create Batch Under Course                                   |\r\n"
-//							  +"   |   6. Allocate Student Batch within a Course                      |\r\n"
-//							  +"   |   7. Update Total Seat of a Batch                                |\r\n"
-//							  +"   |   8. view details of student Matrix in each course and batch     |\r\n"
-//							  +"   |   9. Log Out                                                     |\r\n"
-//							  +"   +------------------------------------------------------------------+");
-//			
 			while(true) {
 				System.out.println("   +------------------------------------------------------------------+\r\n"
 								  +"   |   1. Add a new course                                            |\r\n"
@@ -42,9 +30,11 @@ public class LoginCheckAdmin {
 								  +"   |   6. Allocate Student Batch within a Course                      |\r\n"
 								  +"   |   7. Update Total Seat of a Batch                                |\r\n"
 								  +"   |   8. view details of student Matrix in each course and batch     |\r\n"
-								  +"   |   9. Log Out                                                     |\r\n"
+								  +"   |   9. view all the Courses                                        |\r\n"
+				                  +"   |   10. view all the Batches inside a particular Course            |\r\n"
+								  +"   |   11. Log Out                                                    |\r\n"
 								  +"   +------------------------------------------------------------------+");
-		
+				                  
 				System.out.print(admin1.getName() +" what you want to perform ?\n"
 						+"\n"
 						+ "Enter Your Choice :- ");
@@ -76,6 +66,12 @@ public class LoginCheckAdmin {
 					GetStudents gc = new GetStudents();
 					gc.getStudentMatrix();
 				}else if(input == 9) {
+					GetAllCourses gac = new GetAllCourses();
+					gac.getAllCourses();
+				}else if(input == 10) {
+					AllBatchInACourse abc = new AllBatchInACourse();
+					abc.main();
+				}else if(input == 11) {
 					System.out.println("Log_Out Successfull....!");
 					break;
 				}else {

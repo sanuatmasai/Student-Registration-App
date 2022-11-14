@@ -6,14 +6,6 @@ import com.masai.model.Student;
 public class Demo {
 
 	public static void main(String[] args) {
-//		System.out.println("   +-----------------------------------------+\r\n"
-//				         + "   | 1.Register yourself as Student          |\r\n"
-//				         + "   | 2.Login in as Student                   |\r\n"
-//				         + "   | 3.Login as Admin                        |\r\n"
-//				         + "   | 4.Exit                                  |\r\n"
-//				         + "   +-----------------------------------------+");
-		
-//		System.out.println("_______________________________\n");
 		while(true) {
 			System.out.println("   +-----------------------------------------+\r\n"
 					         + "   | 1.Register yourself as Student          |\r\n"
