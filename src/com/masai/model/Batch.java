@@ -1,6 +1,17 @@
 package com.masai.model;
 
 public class Batch {
+	
+	private int batchid;
+	private int courseid;
+	private String instructor;
+	private int strength = 0;
+	private int max_capacity;
+	private int duration;
+	
+	public Batch() {
+		
+	}
 	public int getBatchid() {
 		return batchid;
 	}
@@ -69,14 +80,5 @@ public class Batch {
 		+"   +----------------------------------+";
 	}
 
-	private int batchid;
-	private int courseid;
-	private String instructor;
-	private int strength = 0;
-	private int max_capacity;
-	private int duration;
 	
-	public Batch() {
-		
-	}
 }
