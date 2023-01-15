@@ -18,8 +18,8 @@ ClassMaster is an automated application for enrolling students in different cour
 
 # Controller
 
--Admin Controller
--Student Controller
+- Admin Controller
+- Student Controller
 
 # Sample Database structure 
 
